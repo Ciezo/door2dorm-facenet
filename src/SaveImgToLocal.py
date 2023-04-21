@@ -66,6 +66,10 @@ def fetch_all_FaceCaptures():
     # Fetch all data as rows
     rows = cursor.fetchall()
 
+    # Prompt the user if they want to preview the images
+    option = input("Do you want to preview images? (y or n): ")
+    option = option.islower()
+
     # Iterate and assign data as to row
     for row in rows:
         face_id = row[0]
@@ -90,24 +94,37 @@ def fetch_all_FaceCaptures():
 
         # Render the image 
         try:
-            # Display the image
-            cv.imshow(f"{tenant_name}", face_img)
-            cv.waitKey(0)
-            try: 
-                # encoded_img = cv.imencode(".png", face_img)
-                # print("Converting image to .png")
-                # face_img_png = encoded_img.tobytes()
-                # with open(f'out/{tenant_name}.png', 'wb') as f:
-                #     # Decode the base64-encoded PNG data
-                #     decoded_data = base64.b64decode(face_img_png)
-                #     print(f"Saved PNG file: out/{tenant_name}.png")
-                #     # Write the decoded data to the file stream
-                #     f.write(decoded_data)
-                
-                # Convert image to PNG format and store it in a variable
-                cv.imwrite(f'out/{tenant_name}.png', face_img)
-            except:
-                print("An error has occurred converting the image")
+            if (option == 'y'): 
+                # Display the image
+                print(">>>>>>>>> Previewing IMAGES <<<<<<<<< ")
+                cv.imshow(f"{tenant_name}", face_img)
+                cv.waitKey(0)
+            else: 
+                print("Display option: no")
+                print("Downloading files....")
+                try: 
+                    # encoded_img = cv.imencode(".png", face_img)
+                    # print("Converting image to .png")
+                    # face_img_png = encoded_img.tobytes()
+                    # with open(f'out/{tenant_name}.png', 'wb') as f:
+                    #     # Decode the base64-encoded PNG data
+                    #     decoded_data = base64.b64decode(face_img_png)
+                    #     print(f"Saved PNG file: out/{tenant_name}.png")
+                    #     # Write the decoded data to the file stream
+                    #     f.write(decoded_data)
+                    
+                    # Convert image to PNG format and store it in a variable
+                    if((os.path.exists('out'))):
+                        cv.imwrite(f'out/{tenant_name}.png', face_img)
+                        print("Images downloaded to", f'out/{tenant_name}.png')
+                    else: 
+                        print("Directory is not existing")
+                        print("Making directory....")
+                        os.mkdir('out')
+                        cv.imwrite(f'out/{tenant_name}.png', face_img)
+                        print("Images downloaded to", f'out/{tenant_name}.png')
+                except:
+                    print("An error has occurred converting the image")
         except: 
             print("There was an error occurred for rendering the image")
 
