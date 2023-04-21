@@ -11,7 +11,7 @@ import base64
 
 
 # Define the path to the directory containing the PNG files
-directory_path = 'out'
+directory_path = 'out/train/images'
 
 # Save all .png files into a dictionary 
 save_png_files = {}

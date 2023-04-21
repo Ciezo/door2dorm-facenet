@@ -1,6 +1,8 @@
 # Dependencies 
 
 - MTCNN
+- Keras 
+- Keras-FaceNet
 - Tensorflow
 - OpenCV
 - Pandas
@@ -14,5 +16,5 @@
 Go into the root directory and run this command:
 
 <code>
-    pip install -r requirements.txt
+pip install -r requirements.txt
 </code>
