@@ -1,0 +1,4 @@
+src/out/
+src/out/*.png
+src/out/*.jpg
+src/out/*.jpeg

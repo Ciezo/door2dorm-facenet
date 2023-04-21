@@ -1,0 +1,8 @@
+opencv-python-headless *
+pandas *
+tensorflow *
+matplotlib *
+python-dotenv *
+mysqlclient *
+numpy *
+mtcnn *
