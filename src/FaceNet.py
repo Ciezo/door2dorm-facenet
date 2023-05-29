@@ -1,12 +1,8 @@
+#!/usr/bin/env python
 import cv2 as cv
 import os 
-import pandas as pd
-import tensorflow as tf
 import matplotlib.pyplot as plt
-from dotenv import load_dotenv
-import MySQLdb
 import numpy as np
-import base64
 from keras_facenet import FaceNet
 from mtcnn.mtcnn import MTCNN
 

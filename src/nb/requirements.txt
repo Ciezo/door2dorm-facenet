@@ -1,0 +1,15 @@
+# Install these requirements which are packaged used on our notebook, 'facenet_nb.ipynb' (Jupyter Notebook file)
+opencv-python
+pandas
+tensorflow
+matplotlib
+python-dotenv
+mysqlclient
+mysql
+numpy
+mtcnn
+keras
+keras-facenet
+scipy
+h5py
+scikit-learn
