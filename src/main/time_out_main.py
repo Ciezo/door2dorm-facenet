@@ -186,7 +186,7 @@ while cap.isOpened():
             cursor.execute(sql_log_time_in_UNAUTHORIZED, val2)
             db.commit()
         
-    cv.imshow("Face Recognition (TIME-INS):", frame)
+    cv.imshow("Face Recognition (TIME-OUTS):", frame)
     if cv.waitKey(1) & ord('q') == 27:
         break
 
