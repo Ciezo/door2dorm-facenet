@@ -11,3 +11,4 @@ keras-facenet
 scipy
 h5py
 scikit-learn
+twilio
