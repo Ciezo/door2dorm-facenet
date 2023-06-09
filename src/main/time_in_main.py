@@ -47,6 +47,7 @@ import pickle
 from keras_facenet import FaceNet
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
+from sms_service import sms_alert_msg
 
 
 ''' FaceNet '''
@@ -162,6 +163,18 @@ while cap.isOpened():
                     print("Something went wrong when inserting to security logs...")
             else: 
                 print("\t ==> Status: Unauthorized")
+
+                ''' @todo SMS message and notification during unauthorized results '''
+                import sms_service
+                from sms_service import sms_alert_msg
+                from tenant_phone_list import tenant_phone_directory
+
+                to_number_ls = tenant_phone_directory()
+                # Send an SMS alert to all tenants
+                for numbers in to_number_ls:
+                    message_to_send = "An unknown entity is detected within the premises. Please, be careful \nTime: '{}'".format(current_time.strftime("%H:%M:%S"))
+                    sms_alert_msg(message_to_send, numbers)
+
                 cv.rectangle(frame, (x,y), (x+w,y+h), (255,0,0), 10)                        # Red box
                 # Display "Unauthorized" text on screen real-time
                 cv.putText(frame, "Unauthorized", (x,y-10), cv.FONT_HERSHEY_SIMPLEX,        # Red text
@@ -174,6 +187,18 @@ while cap.isOpened():
         else: 
             ''' When confidence < 70 '''
             print("\t ==> Status: Unauthorized")
+            
+            ''' @todo SMS message and notification during unauthorized results '''
+            import sms_service
+            from sms_service import sms_alert_msg
+            from tenant_phone_list import tenant_phone_directory
+
+            to_number_ls = tenant_phone_directory()
+            # Send an SMS alert to all tenants
+            for numbers in to_number_ls:
+                message_to_send = "An unknown entity is detected within the premises. Please, be careful \nTime: '{}'".format(current_time.strftime("%H:%M:%S"))
+                sms_alert_msg(message_to_send, numbers)
+
             cv.rectangle(frame, (x,y), (x+w,y+h), (255,0,0), 10)                        # Red box
             # Display "Unauthorized" text on screen real-time
             cv.putText(frame, "Unauthorized", (x,y-10), cv.FONT_HERSHEY_SIMPLEX,        # Red text
