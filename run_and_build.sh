@@ -8,16 +8,16 @@ echo "==========================================================================
 ls -la *.py
 echo "================================================================================="
 echo "Fetching images from remote database...."
-py SaveImgToLocal.py
+python SaveImgToLocal.py
 echo "Plotting images....."
-py PlotImages.py
+python PlotImages.py
 echo "Extracting facial features...."
-py FacialExtraction.py
+python FacialExtraction.py
 echo "Defining bounding areas"
-py BoundingAreas.py
+python BoundingAreas.py
 echo "Implementing FaceNet and building Facial Recognition Model"
-py FaceNet.py
+pthon FaceNet.py
 echo "Attempting to run FaceNet"
 cd main
 echo "Running FaceNet....."
-py main.py
+python main.py

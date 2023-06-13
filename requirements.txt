@@ -6,6 +6,7 @@ mysqlclient
 mysql
 numpy
 mtcnn
+tensorflow
 keras
 keras-facenet
 scipy

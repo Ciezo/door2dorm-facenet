@@ -3,4 +3,4 @@
 echo "Attempting to run FaceNet"
 cd src/main
 echo "Running FaceNet....."
-py main.py
+python main.py
