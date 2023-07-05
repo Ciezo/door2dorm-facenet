@@ -16,7 +16,7 @@ python FacialExtraction.py
 echo "Defining bounding areas"
 python BoundingAreas.py
 echo "Implementing FaceNet and building Facial Recognition Model"
-pthon FaceNet.py
+python FaceNet.py
 echo "Attempting to run FaceNet"
 cd main
 echo "Running FaceNet....."
