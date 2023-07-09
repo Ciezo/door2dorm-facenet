@@ -188,7 +188,7 @@ accuracy_score(Y_test,ypreds_test)
 
 
 ''' Testing the Model '''
-t_im = cv.imread("out/test/images/Alfredo Vicente.png")
+t_im = cv.imread("out/test/images/Cloyd Van S. Secuya.png")
 t_im = cv.cvtColor(t_im, cv.COLOR_BGR2RGB)
 x,y,w,h = detector.detect_faces(t_im)[0]['box']
 print("Tested 1 image: ")

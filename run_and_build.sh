@@ -17,7 +17,17 @@ echo "Defining bounding areas"
 python BoundingAreas.py
 echo "Implementing FaceNet and building Facial Recognition Model"
 python FaceNet.py
+cd ..
+echo "Going to root"
+echo "Updating classes"
+echo "Copying files from embed"
+ls src/out/embed
+cp src/out/embed/* classes
+echo "Updating models"
+ls src/out/model
+cp src/out/model/* data/models
 echo "Attempting to run FaceNet"
-cd main
+echo "Going to main"
+cd src/main
 echo "Running FaceNet....."
 python main.py

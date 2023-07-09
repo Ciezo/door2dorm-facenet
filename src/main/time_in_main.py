@@ -81,8 +81,15 @@ model = pickle.load(open("../../data/models/svm_model_160x160.pkl", "rb"))
 
 
 ''' Initializing video capture '''
+'''
+@note
+    index 0 is for built-in webcam
+    index 1 is for external webcam
+'''
 cap = cv.VideoCapture(0)
-
+# Setting scale and res
+cap.set(3, 1920)
+cap.set(4, 1080)
 
 ''' Real time face detection and recognition '''
 while cap.isOpened():
@@ -110,8 +117,8 @@ while cap.isOpened():
             embedding_scores = model.decision_function(ypred)
             print("Scores: ", embedding_scores)
             recognition_score = model.decision_function(ypred)[0]
-            final_recognition_score = int(100*(1-recognition_score[0]/10))
-            print("Recognition score: ", final_recognition_score)
+            # final_recognition_score = int(100*(1-recognition_score[0]/10))
+            # print("Recognition score: ", final_recognition_score)
             
             ''' Fetching the names from the array '''
             final_name = encoder.inverse_transform(face_name)[0]
@@ -126,7 +133,7 @@ while cap.isOpened():
                 print("Recognized: ", final_name)
                 print("Confidence: ", confidence)
                 print("\t ==> Status: Authorized")
-                cv.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 10)                        # Green box (BGR)
+                cv.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)                        # Green box (BGR)
                 # Ender the name on screen real-time 
                 cv.putText(frame, str(final_name), (x,y-10), cv.FONT_HERSHEY_SIMPLEX,       # Blue text             
                         1, (255,0,0), 3, cv.LINE_AA)   
@@ -172,10 +179,11 @@ while cap.isOpened():
                 to_number_ls = tenant_phone_directory()
                 # Send an SMS alert to all tenants
                 for numbers in to_number_ls:
+                    current_time = datetime.now()
                     message_to_send = "An unknown entity is detected within the premises. Please, be careful \nTime: '{}'".format(current_time.strftime("%H:%M:%S"))
                     sms_alert_msg(message_to_send, numbers)
 
-                cv.rectangle(frame, (x,y), (x+w,y+h), (255,0,0), 10)                        # Red box
+                cv.rectangle(frame, (x,y), (x+w,y+h), (255,0,0), 2)                        # Red box
                 # Display "Unauthorized" text on screen real-time
                 cv.putText(frame, "Unauthorized", (x,y-10), cv.FONT_HERSHEY_SIMPLEX,        # Red text
                         1, (0,0,255), 3, cv.LINE_AA)
@@ -196,10 +204,11 @@ while cap.isOpened():
             to_number_ls = tenant_phone_directory()
             # Send an SMS alert to all tenants
             for numbers in to_number_ls:
+                current_time = datetime.now()
                 message_to_send = "An unknown entity is detected within the premises. Please, be careful \nTime: '{}'".format(current_time.strftime("%H:%M:%S"))
                 sms_alert_msg(message_to_send, numbers)
 
-            cv.rectangle(frame, (x,y), (x+w,y+h), (255,0,0), 10)                        # Red box
+            cv.rectangle(frame, (x,y), (x+w,y+h), (255,0,0), 2)                        # Red box
             # Display "Unauthorized" text on screen real-time
             cv.putText(frame, "Unauthorized", (x,y-10), cv.FONT_HERSHEY_SIMPLEX,        # Red text
                     1, (0,0,255), 3, cv.LINE_AA)
