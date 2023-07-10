@@ -150,11 +150,13 @@ while cap.isOpened():
                 print("Assigned room: ", res_tenant_room)
                 # Time
                 from datetime import datetime
+                from datetime import date
                 current_time = datetime.now()
                 time_in = current_time.strftime("%H:%M:%S")
+                current_date = date.today()
                 
-                sql_log_time_in = "INSERT INTO SECURITY_LOGS_TIME_IN (tenant_name, tenant_room, time_in, status, capture) VALUES (%s, %s, %s, %s, %b)"
-                val = (final_name, res_tenant_room, time_in, "Authorized", rgb_img)
+                sql_log_time_in = "INSERT INTO SECURITY_LOGS_TIME_IN (tenant_name, tenant_room, date, time_in, status, capture) VALUES (%s, %s, %s, %s, %s, %b)"
+                val = (final_name, res_tenant_room, current_date, time_in, "Authorized", rgb_img)
                 # val = {
                 #     'tenant_name': final_name,
                 #     'tenant_room': res_tenant_room,
@@ -213,10 +215,17 @@ while cap.isOpened():
             cv.putText(frame, "Unauthorized", (x,y-10), cv.FONT_HERSHEY_SIMPLEX,        # Red text
                     1, (0,0,255), 3, cv.LINE_AA)
             
+            # Time
+            from datetime import datetime
+            from datetime import date
+            current_time = datetime.now()
+            time_in = current_time.strftime("%H:%M:%S")
+            current_date = date.today()
+                            
 
             ''' @todo Insert into the database table for UNAUTHORIZED entries '''
-            sql_log_time_in_UNAUTHORIZED = "INSERT INTO SECURITY_LOGS_TIME_IN (tenant_name, tenant_room, time_in, status, capture) VALUES (%s, %s, %s, %s, %b)"
-            val2 = ('Unknown name', 'Unknown room', time_in, "Unauthorized", rgb_img)
+            sql_log_time_in_UNAUTHORIZED = "INSERT INTO SECURITY_LOGS_TIME_IN (tenant_name, tenant_room, date, time_in, status, capture) VALUES (%s, %s, %s, %s, %s, %b)"
+            val2 = ('Unknown name', 'Unknown room', current_date, time_in, "Unauthorized", rgb_img)
             cursor.execute(sql_log_time_in_UNAUTHORIZED, val2)
             db.commit()
         
