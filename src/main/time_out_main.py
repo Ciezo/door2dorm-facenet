@@ -82,8 +82,8 @@ model = pickle.load(open("../../data/models/svm_model_160x160.pkl", "rb"))
 ''' Initializing video capture '''
 '''
 @note
-    index 0 is for built-in webcam
-    index 1 is for external webcam
+    index 1 is for built-in webcam
+    index 2 is for external webcam at right USB
 '''
 cap = cv.VideoCapture(0)
 # Setting scale and res

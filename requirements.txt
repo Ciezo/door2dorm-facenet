@@ -13,3 +13,9 @@ scipy
 h5py
 scikit-learn
 twilio
+easydict
+tqdm
+torchvision
+torch
+Pillow
+tensorboardX

@@ -11,8 +11,8 @@ camera2 is frame2
 '''
 
 
-cap = cv.VideoCapture(0)        # in-built webcam
-cap2 = cv.VideoCapture(1)       # external webcam
+cap = cv.VideoCapture(2)        # in-built webcam
+cap2 = cv.VideoCapture(1)       # external webcam 1 (right USB)
 
 # Setting scale and res
 cap.set(3, 1920)
