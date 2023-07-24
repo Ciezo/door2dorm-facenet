@@ -107,7 +107,7 @@ while cap.isOpened():
                     print("\t ==> Status: Authorized")
                     cv.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)                        # Green box (BGR)
                     # Ender the name on screen real-time 
-                    cv.putText(frame, "Cheska Navarro", (x,y-10), cv.FONT_HERSHEY_SIMPLEX,       # Blue text             
+                    cv.putText(frame, str(final_name), (x,y-10), cv.FONT_HERSHEY_SIMPLEX,       # Blue text             
                             1, (255,0,0), 3, cv.LINE_AA)        
                     
                 else: 
